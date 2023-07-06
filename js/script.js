@@ -59,6 +59,42 @@ const makeGuess = function(guess){
   }else{
     AllGuessedLetters.push(guess)
     console.log(AllGuessedLetters);
+    displayGuessedLetters();
+    wordInProgress(AllGuessedLetters);
   }
 
+};
+//Function to show guessed letters
+const displayGuessedLetters= function(){
+  guessedLetters.innerHTML = "";
+  for(const letter of AllGuessedLetters){
+    const li = document.createElement("li");
+    li.innerText = letter;
+    guessedLetters.append(li);
+  }
+};
+
+//Fuction toupdate the Word in Progress
+
+const wordInProgress = function(AllGuessedLetters){
+  const wordUpper = word.toUpperCase(); // word to uppercase
+  const wordArray = wordUpper.split(""); // split the const revealWord = [];
+  const revealWord = [];
+  for (const letter of wordArray) {
+    if (AllGuessedLetters.includes(letter)) {
+      revealWord.push(letter.toUpperCase());
+    } else {
+      revealWord.push("●");
+    }
+  }
+
+  wordInProgress.innerText = revealWord.join("");
+  checkIfWin();
+};
+
+const checkIfWin = function () {
+  if (word.toUpperCase() === wordInProgress.innerText) {
+    message.classList.add("win");
+    message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
+  }
 };
