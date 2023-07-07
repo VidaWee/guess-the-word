@@ -65,9 +65,10 @@ const makeGuess = function(guess){
   }else{
     AllGuessedLetters.push(guess)
     console.log(AllGuessedLetters);
+    updateRemainingGuess(guess);
     displayGuessedLetters();
     wordInProgress(AllGuessedLetters);
-    updateRemainingGuess(AllGuessedLetters);
+   
 
   }
 
