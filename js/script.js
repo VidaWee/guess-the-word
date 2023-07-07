@@ -88,7 +88,7 @@ const wordInProgress = function(AllGuessedLetters){
     }
   }
 
-  wordInProgress.innerText = revealWord.join("");
+  wordProgress.innerText = revealWord.join("");
   checkIfWin();
 };
 
