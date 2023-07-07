@@ -12,7 +12,22 @@ let word = "magnolia";
 const AllGuessedLetters = [];
 let remainingGuesses= 8;
 
+const getWord = async function(){
 
+  const res = await fetch ("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
+  const words = await res.text();
+  //console.log(data);
+  const wordArray = words.split("\n");
+  const randomIndex = Math.floor(Math.random() * wordArray.length);
+  word = wordArray[randomIndex].trim();
+
+  dummyText(word);
+ 
+};
+
+getWord();
+
+// display symbol as placeholder
 
 const dummyText = function (word){
     const placeholderLetters = [];
